@@ -1,9 +1,11 @@
 ///<reference path="../../typings/tsd.d.ts"/>
 
+import iHar = require('../../interfaces/iHar');
+
 export = Manager;
 
 class Manager {
-    private har:any = null;
+    private har:iHar = null;
 
     public getHar() {
         return this.har;
@@ -13,7 +15,7 @@ class Manager {
         this.har = this.parseHar(fileContent);
     }
 
-    private parseHar(fileContent:string) {
+    private parseHar(fileContent:string):iHar {
         try {
             return JSON.parse(fileContent);
         }
