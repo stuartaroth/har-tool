@@ -4,9 +4,9 @@ export = iHar;
 
 interface iHar {
     log: {
-        version: string,
-        creator: any,
-        pages: any[],
+        version: string;
+        creator: any;
+        pages: any[];
         entries: iEntry[];
     }
 }

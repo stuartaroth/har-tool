@@ -1,12 +1,14 @@
 'use strict';
 
 define([
+    'underscore',
     'angular',
     'angularRoute',
     'services/module',
     'directives/module',
     'views/module'
 ], function(
+    _,
     angular,
     angularRoute,
     services,

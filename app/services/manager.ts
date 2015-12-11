@@ -37,15 +37,15 @@ class Manager {
     private addHeaderStatistics(responseStatistics:any) {
         var headerMap = {};
         var entries = this.har.log.entries;
-        for(var i = 0; i < entries.length; i++) {
-            var headers = entries[i].response.headers;
-            for(var j = 0; j < headers.length; j++) {
-                var name = headers[j].name.toLowerCase();
-                var value = headers[j].value.toLowerCase();
+        _.each(entries, (entry) => {
+            var headers = entry.response.headers;
+            _.each(headers, (header) => {
+                var name = header.name.toLowerCase();
+                var value = header.value.toLowerCase();
                 this.mapToMap(headerMap, name);
                 this.countToMap(headerMap[name], value);
-            }
-        }
+            });
+        });
         responseStatistics.headerMap = headerMap;
     }
 
