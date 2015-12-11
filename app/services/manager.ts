@@ -30,30 +30,36 @@ class Manager {
 
     private calculateStatistics() {
         var responseStatistics = {};
-        this.addContentType(responseStatistics);
+        this.addHeaderStatistics(responseStatistics);
         this.statistics = responseStatistics;
     }
 
-    private addContentType(responseStatistics:any) {
-        var contentTypeMap = {};
+    private addHeaderStatistics(responseStatistics:any) {
+        var headerMap = {};
         var entries = this.har.log.entries;
         for(var i = 0; i < entries.length; i++) {
             var headers = entries[i].response.headers;
             for(var j = 0; j < headers.length; j++) {
-                if(headers[j].name.toLowerCase() == "content-type") {
-                    this.addToMap(contentTypeMap, headers[j].value);
-                }
+                var name = headers[j].name.toLowerCase();
+                var value = headers[j].value.toLowerCase();
+                this.mapToMap(headerMap, name);
+                this.countToMap(headerMap[name], value);
             }
         }
-        responseStatistics.contentTypeMap = contentTypeMap;
+        responseStatistics.headerMap = headerMap;
     }
 
-    private addToMap(map:any, item:string) {
+    private mapToMap(map:any, item:string) {
+        if(!map[item]) {
+            map[item] = {};
+        }
+    }
+
+    private countToMap(map:any, item:string) {
         if(map[item]) {
             map[item] += 1;
         }
         else {
-            console.log("wait here");
             map[item] = 1;
         }
     }
