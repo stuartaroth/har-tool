@@ -3,5 +3,22 @@
 export = Manager;
 
 class Manager {
-    public har:any = null;
+    private har:any = null;
+
+    public getHar() {
+        return this.har;
+    }
+
+    public setHar(fileContent:string) {
+        this.har = this.parseHar(fileContent);
+    }
+
+    private parseHar(fileContent:string) {
+        try {
+            return JSON.parse(fileContent);
+        }
+        catch(exception) {
+            return null;
+        }
+    }
 }

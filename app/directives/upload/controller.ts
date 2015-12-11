@@ -3,20 +3,39 @@
 export = UploadController;
 
 class UploadController {
+    public file = null;
     public reader = new FileReader();
-    public readHar = (file:any) => {
-        this.reader.readAsText(file)
-    };
+    public readHar() {
+        this.reader.readAsText(this.file)
+    }
+    public check() {
+
+    }
 
     static $inject = [
+        '$scope',
+        '$element',
         'htManager'
     ];
 
     constructor(
-        htManager
+        $scope,
+        $element,
+        public htManager
     ) {
-        this.reader.onload = (onLoadEvent:any) => {
-            console.log(onLoadEvent.srcElement.result);
+        var self = this;
+        $element.bind("change", function(e){
+            self.file = (e.srcElement || e.target).files[0];
+            self.readHar();
+        });
+
+        self.reader.onload = (onLoadEvent:any) => {
+            var heyo = onLoadEvent.srcElement.result;
+            self.htManager.setHar(heyo);
+        };
+
+        self.check = () => {
+            console.log(self.htManager.getHar());
         };
     }
 }

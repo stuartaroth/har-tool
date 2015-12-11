@@ -8,7 +8,7 @@ class ExampleController {
     ];
 
     constructor(
-        htManager
+        public htManager
     ) {
 
     }
