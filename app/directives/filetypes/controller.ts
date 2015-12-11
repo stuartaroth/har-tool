@@ -24,6 +24,10 @@ class FiletypesController {
 
     public getFiletypeStats() {
         var array = [];
-
+        var requests = this.htManager.har.log.entries;
+        for(var i = 0; i < requests.length; i++) {
+            array.push(requests[i].request.url);
+        }
+        this.stats = array;
     }
 }

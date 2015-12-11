@@ -1,6 +1,6 @@
 ///<reference path="../../typings/tsd.d.ts"/>
 
-import iHar = require('../../interfaces/iHar');
+import iHar = require('../interfaces/iHar');
 
 export = Manager;
 
