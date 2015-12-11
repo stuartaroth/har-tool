@@ -1,0 +1,18 @@
+{
+  "name": "angular-requirejs-typescript-seed",
+  "description": "A starter project for AngularJS with RequireJS and TypeScript",
+  "version": "0.3.0",
+  "homepage": "https://github.com/stuartaroth/angular-requirejs-typescript-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-route": "1.4.x",
+    "angular-loader": "1.4.x",
+    "angular-mocks": "~1.4.x",
+    "html5-boilerplate": "~4.3.0",
+    "requirejs-text": "2.0.x",
+    "requirejs": "2.1.x",
+    "bootstrap": "~3.3.6"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "angular-requirejs-typescript-seed",
+  "private": true,
+  "version": "0.1.0",
+  "description": "AngularJS seed project modified for RequireJS and TypeScript support.",
+  "repository": "https://github.com/stuartaroth/angular-requirejs-typescript-seed",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.3.1",
+    "grunt": "^0.4.5",
+    "grunt-typescript": "^0.8.0"
+  }
+}

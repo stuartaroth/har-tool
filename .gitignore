@@ -1,0 +1,13 @@
+logs/*
+!.gitkeep
+node_modules/
+app/bower_components/
+tmp
+.DS_Store
+.idea
+app/directives/**/*.js
+app/directives/**/*.js.map
+app/services/**/*.js
+app/services/**/*.js.map
+app/views/**/*.js
+app/views/**/*.js.map
