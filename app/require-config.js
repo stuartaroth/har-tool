@@ -17,9 +17,12 @@ if(window.__karma__) {
 }
 
 require.config({
+	nodeIdCompat: true,
 	paths: {
 		"underscore": "bower_components/underscore/underscore",
 		angular: 'bower_components/angular/angular',
+		"chart": "bower_components/Chart.js/Chart",
+		"angular-chart": 'bower_components/angular-chart.js/angular-chart',
 		angularRoute: 'bower_components/angular-route/angular-route',
 		angularMocks: 'bower_components/angular-mocks/angular-mocks',
 		text: 'bower_components/requirejs-text/text'
@@ -27,6 +30,8 @@ require.config({
 	shim: {
 		"underscore": {"exports": "underscore"},
 		'angular' : {'exports' : 'angular'},
+        //'chart': {'exports' : 'chart'},
+        //'angular-chart': ['angular','chart'],
 		'angularRoute': ['angular'],
 		'angularMocks': {
 			deps:['angular'],
@@ -43,8 +48,10 @@ require.config({
 
 require([
 	'angular',
+	'chart',
+	'angular-chart',
 	'app'
-	], function(angular, app) {
+	], function(angular, chart, angularChart, app) {
 		var $html = angular.element(document.getElementsByTagName('html')[0]);
 		angular.element().ready(function() {
 			// bootstrap the app manually
