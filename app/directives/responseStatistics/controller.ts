@@ -18,8 +18,6 @@ class ResponseStatisticsController {
     constructor(
         public htManager
     ) {
-        console.log(require.defined("chart"));
-        console.log(require.defined("angular-chart"));
         this.responses = this.getResponses(htManager.har);
     }
 
