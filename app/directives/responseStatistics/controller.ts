@@ -15,6 +15,14 @@ class ResponseStatisticsController {
     public mimeTypesBySize:iChartInfo = null;
     public statusByCount:iChartInfo = null;
 
+    public mimeTypesByCountBarChart:boolean = true;
+    public mimeTypesBySizeBarChart:boolean = true;
+    public statusByCountBarChart:boolean = true;
+
+    public mimeTypesByCountBarChartToggle() {
+        this.mimeTypesByCountBarChart = !this.mimeTypesByCountBarChart;
+    }
+
     static $inject = [
         'htManager',
         'htSorting'
@@ -44,7 +52,7 @@ class ResponseStatisticsController {
         _.each(this.responses, (response:iResponse) => {
             this.htSorting.mapKeyCount(countMap, response.content.mimeType);
             this.addSizeMap(sizeMap, response);
-            this.htSorting.mapKeyCount(statusMap, response.status);
+            this.htSorting.mapKeyCount(statusMap, response.status + " - " + response.statusText);
         });
 
         this.mimeTypesByCount = this.htSorting.getChartInfo(countMap, '');

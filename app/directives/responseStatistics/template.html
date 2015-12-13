@@ -1,24 +1,4 @@
 <h1>ResponseStatistics</h1>
-<canvas
-    id="mimeTypesByCount"
-    class="chart chart-bar"
-    chart-data="ctrl.mimeTypesByCount.data"
-    chart-labels="ctrl.mimeTypesByCount.labels"
-    chart-series="ctrl.mimeTypesByCount.series">
-</canvas>
-
-<canvas
-        id="mimeTypesBySize"
-        class="chart chart-bar"
-        chart-data="ctrl.mimeTypesBySize.data"
-        chart-labels="ctrl.mimeTypesBySize.labels"
-        chart-series="ctrl.mimeTypesBySize.series">
-</canvas>
-
-<canvas
-        id="statusByCount"
-        class="chart chart-bar"
-        chart-data="ctrl.statusByCount.data"
-        chart-labels="ctrl.statusByCount.labels"
-        chart-series="ctrl.statusByCount.series">
-</canvas>
+<ht-chart-switcher chart-info="ctrl.mimeTypesByCount" header="Hello Word"></ht-chart-switcher>
+<ht-chart-switcher chart-info="ctrl.mimeTypesBySize" header="Hello Word"></ht-chart-switcher>
+<ht-chart-switcher chart-info="ctrl.statusByCount" header="Hello Word"></ht-chart-switcher>
