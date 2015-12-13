@@ -8,19 +8,16 @@ class UploadController {
     public readHar() {
         this.reader.readAsText(this.file)
     }
-    public check() {
-
-    }
 
     static $inject = [
-        '$scope',
+        '$window',
         '$element',
         'htManager'
     ];
 
     constructor(
-        $scope,
-        $element,
+        private $window,
+        private $element,
         public htManager
     ) {
         var self = this;
@@ -32,10 +29,7 @@ class UploadController {
         self.reader.onload = (onLoadEvent:any) => {
             var heyo = onLoadEvent.srcElement.result;
             self.htManager.setHar(heyo);
-        };
-
-        self.check = () => {
-            console.log(self.htManager.getHar());
+            $window.location.href = "/#/main";
         };
     }
 }

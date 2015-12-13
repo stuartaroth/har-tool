@@ -15,14 +15,7 @@
 	<body ng-cloak>
         <ht-topbar></ht-topbar>
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-3 col-md-2 sidebar">
-                    <ht-sidebar></ht-sidebar>
-                </div>
-                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <div ng-view></div>
-                </div>
-			</div>
+			<div ng-view></div>
         </div>
 		<script data-main="require-config" src="bower_components/requirejs/require.js"></script>
 	</body>

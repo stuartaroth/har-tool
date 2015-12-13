@@ -8,8 +8,8 @@ export = angular.module('ht.views', [
     $routeProvider.when('/upload', {
         template: '<ht-upload></ht-upload>'
     });
-    $routeProvider.when('/filetypes', {
-        template: '<ht-filetypes></ht-filetypes>'
+    $routeProvider.when('/main', {
+        template: '<ht-main></ht-main>'
     });
     $routeProvider.otherwise({redirectTo: '/upload'});
 }]);
