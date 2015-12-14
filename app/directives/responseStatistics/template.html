@@ -1,4 +1,27 @@
 <h1>ResponseStatistics</h1>
-<ht-chart-switcher chart-info="ctrl.mimeTypesByCount" header="Hello Word"></ht-chart-switcher>
-<ht-chart-switcher chart-info="ctrl.mimeTypesBySize" header="Hello Word"></ht-chart-switcher>
-<ht-chart-switcher chart-info="ctrl.statusByCount" header="Hello Word"></ht-chart-switcher>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <ht-chart-switcher chart-info="ctrl.mimeTypesByTotalTime" header="{{::ctrl.mimeTypesByTotalTimeHeader}}"></ht-chart-switcher>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <ht-chart-switcher chart-info="ctrl.mimeTypesByAverageTime" header="{{::ctrl.mimeTypesByAverageTimeHeader}}"></ht-chart-switcher>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <ht-chart-switcher chart-info="ctrl.mimeTypesByCount" header="{{::ctrl.mimeTypesByCountHeader}}"></ht-chart-switcher>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <ht-chart-switcher chart-info="ctrl.mimeTypesBySize" header="{{::ctrl.mimeTypesBySizeHeader}}"></ht-chart-switcher>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <ht-chart-switcher chart-info="ctrl.statusByCount" header="{{::ctrl.statusByCountHeader}}"></ht-chart-switcher>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+
+        </div>
+    </div>
+</div>

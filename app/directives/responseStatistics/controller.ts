@@ -11,17 +11,21 @@ export = ResponseStatisticsController;
 class ResponseStatisticsController {
     public responses = null;
 
+    public mimeTypesByCountHeader:string = 'Number of Content Types Received';
     public mimeTypesByCount:iChartInfo = null;
+
+    public mimeTypesBySizeHeader:string = 'Size (bytes) of Content Types Received';
     public mimeTypesBySize:iChartInfo = null;
+
+    public statusByCountHeader:string = 'HTTP Statuses Received';
     public statusByCount:iChartInfo = null;
 
-    public mimeTypesByCountBarChart:boolean = true;
-    public mimeTypesBySizeBarChart:boolean = true;
-    public statusByCountBarChart:boolean = true;
+    public mimeTypesByTotalTimeHeader:string = 'Total Time for Content Types Received';
+    public mimeTypesByTotalTime:iChartInfo = null;
 
-    public mimeTypesByCountBarChartToggle() {
-        this.mimeTypesByCountBarChart = !this.mimeTypesByCountBarChart;
-    }
+    public mimeTypesByAverageTimeHeader:string = 'Average Time for Content Types Received';
+    public mimeTypesByAverageTime:iChartInfo = null;
+
 
     static $inject = [
         'htManager',
@@ -32,32 +36,30 @@ class ResponseStatisticsController {
         public htManager,
         public htSorting
     ) {
-        this.responses = this.getResponses(htManager.har);
-        this.setMimeTypes();
+        this.getStatistics();
     }
 
-    public getResponses(har:iHar) {
-        var responses = [];
-        _.each(har.log.entries, (entry:iEntry) => {
-            responses.push(entry.response);
-        });
-        return responses;
-    }
 
-    public setMimeTypes() {
+    public getStatistics() {
         var countMap:any = {};
         var sizeMap:any = {};
         var statusMap:any = {};
+        var totalTime:any = {};
+        var averageTime:any = {};
 
-        _.each(this.responses, (response:iResponse) => {
-            this.htSorting.mapKeyCount(countMap, response.content.mimeType);
-            this.addSizeMap(sizeMap, response);
-            this.htSorting.mapKeyCount(statusMap, response.status + " - " + response.statusText);
+        _.each(this.htManager.har.log.entries, (entry:iEntry) => {
+            this.htSorting.mapKeyCount(countMap, entry.response.content.mimeType);
+            this.addSizeMap(sizeMap, entry.response);
+            this.htSorting.mapKeyCount(statusMap, entry.response.status + " - " + entry.response.statusText);
+            this.addTotalTime(totalTime, entry);
         });
+        this.getAverageTime(totalTime, countMap, averageTime);
 
         this.mimeTypesByCount = this.htSorting.getChartInfo(countMap, '');
         this.mimeTypesBySize = this.htSorting.getChartInfo(sizeMap, '');
         this.statusByCount = this.htSorting.getChartInfo(statusMap, '');
+        this.mimeTypesByTotalTime = this.htSorting.getChartInfo(totalTime, '');
+        this.mimeTypesByAverageTime = this.htSorting.getChartInfo(averageTime, '');
     }
 
     public addSizeMap(map:any, response:iResponse) {
@@ -67,5 +69,20 @@ class ResponseStatisticsController {
         else {
             map[response.content.mimeType] = response.content.size;
         }
+    }
+
+    public addTotalTime(map:any, entry:iEntry) {
+        if(map[entry.response.content.mimeType]) {
+            map[entry.response.content.mimeType] += entry.time;
+        }
+        else {
+            map[entry.response.content.mimeType] = entry.time;
+        }
+    }
+
+    public getAverageTime(totalTime, countMap, averageTime) {
+        _.each(totalTime, (value:number, key:string) => {
+            averageTime[key] = value / countMap[key];
+        });
     }
 }
