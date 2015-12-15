@@ -11,16 +11,16 @@ export = StatisticsController;
 class StatisticsController {
     public responses = null;
 
-    public mimeTypesByCountHeader:string = 'Content Type by Count Received';
+    public mimeTypesByCountHeader:string = 'Files by Content Type';
     public mimeTypesByCount:iChartInfo = null;
 
-    public mimeTypesBySizeHeader:string = 'Content Type by Total Size Received';
+    public mimeTypesBySizeHeader:string = 'Bytes by Content Type';
     public mimeTypesBySize:iChartInfo = null;
 
-    public statusByCountHeader:string = 'HTTP Statuses by Count Received';
+    public statusByCountHeader:string = 'Responses by HTTP Status';
     public statusByCount:iChartInfo = null;
 
-    public longestTimesHeader:string = 'Top 10 Longest Requests by Url';
+    public longestTimesHeader:string = 'Longest Responses by Resource';
     public longestTimes:iChartInfo = null;
 
     public sizeOverTimeHeader:string = 'Response Sizes (Chronological Order)';
