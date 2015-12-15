@@ -24,7 +24,7 @@ class StatisticsController {
     public longestTimes:iChartInfo = null;
 
     public sizeOverTimeHeader:string = 'Response Sizes (Chronological Order)';
-    public sizeOverTime:iChartInfo = {data:[[], []], labels:[], series: ['Original Body Size', 'Compressed Body Size']};
+    public sizeOverTime:iChartInfo = {data:[[], []], labels:[], series: ['Original Body Size', 'Sent Body Size']};
 
     static $inject = [
         '$window',
