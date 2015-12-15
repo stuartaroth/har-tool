@@ -3,8 +3,20 @@
 export = ChartSwitcherController;
 
 class ChartSwitcherController {
-    public barChart:boolean = true;
-    public toggle() {
-        this.barChart = !this.barChart;
+    public chartType:number = null;
+
+    public BAR:number = 0;
+    public PIE:number = 1;
+    public LINE:number = 2;
+    public DOUGHNUT:number = 3;
+    public POLAR_AREA:number = 4;
+
+    public switch() {
+        if(this.chartType == this.POLAR_AREA) {
+            this.chartType = this.BAR;
+        }
+        else {
+            this.chartType++;
+        }
     }
 }

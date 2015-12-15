@@ -1,6 +1,8 @@
 <div>
-    <h3>{{ctrl.header}} <i class="fa fa-refresh" ng-click="ctrl.toggle()"></i></h3>
-    <div ng-show="ctrl.barChart">
+    <h3>{{ctrl.header}}
+        <i class="fa fa-refresh" ng-click="ctrl.switch()"></i>
+    </h3>
+    <div ng-show="ctrl.chartType == ctrl.BAR">
         <canvas
                 class="chart chart-bar"
                 chart-data="ctrl.chartInfo.data"
@@ -8,9 +10,31 @@
                 chart-series="ctrl.chartInfo.series">
         </canvas>
     </div>
-    <div ng-show="!ctrl.barChart">
+    <div ng-show="ctrl.chartType == ctrl.PIE">
+        <canvas
+                class="chart chart-pie"
+                chart-data="ctrl.chartInfo.data[0]"
+                chart-labels="ctrl.chartInfo.labels">
+        </canvas>
+    </div>
+    <div ng-show="ctrl.chartType == ctrl.LINE">
+        <canvas
+                class="chart chart-line"
+                chart-data="ctrl.chartInfo.data"
+                chart-labels="ctrl.chartInfo.labels"
+                chart-series="ctrl.chartInfo.series">
+        </canvas>
+    </div>
+    <div ng-show="ctrl.chartType == ctrl.DOUGHNUT">
         <canvas
                 class="chart chart-doughnut"
+                chart-data="ctrl.chartInfo.data[0]"
+                chart-labels="ctrl.chartInfo.labels">
+        </canvas>
+    </div>
+    <div ng-show="ctrl.chartType == ctrl.POLAR_AREA">
+        <canvas
+                class="chart chart-polar-area"
                 chart-data="ctrl.chartInfo.data[0]"
                 chart-labels="ctrl.chartInfo.labels">
         </canvas>

@@ -27,9 +27,10 @@ class UploadController {
         });
 
         self.reader.onload = (onLoadEvent:any) => {
-            var heyo = onLoadEvent.srcElement.result;
-            self.htManager.setHar(heyo);
-            $window.location.href = "/#/main";
+            self.htManager.setHar(onLoadEvent.srcElement.result);
+            if(self.htManager.getHar()) {
+                $window.location.href = "/#/statistics";
+            }
         };
     }
 }

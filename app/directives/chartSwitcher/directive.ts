@@ -12,7 +12,8 @@ class ChartSwitcherDirective {
     templateUrl:string = './directives/chartSwitcher/template.html';
     scope:any = {
         header: '@',
-        chartInfo: '='
+        chartInfo: '=',
+        chartType: '@'
     };
 
     static create() {
