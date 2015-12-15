@@ -18,11 +18,11 @@ if(window.__karma__) {
 
 require.config({
 	paths: {
-		"underscore": "bower_components/underscore/underscore",
-		angular: 'bower_components/angular/angular',
-		"chart": "bower_components/Chart.js/Chart",
+		"underscore": "bower_components/underscore/underscore-min",
+		angular: 'bower_components/angular/angular.min',
+		"chart": "bower_components/Chart.js/Chart.min",
 		"angular-chart": 'bower_components/angular-chart.js/angular-chart',
-		angularRoute: 'bower_components/angular-route/angular-route',
+		angularRoute: 'bower_components/angular-route/angular-route.min',
 		angularMocks: 'bower_components/angular-mocks/angular-mocks',
 		text: 'bower_components/requirejs-text/text'
 	},
