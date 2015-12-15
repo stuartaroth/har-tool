@@ -13,7 +13,8 @@ class ChartSwitcherDirective {
     scope:any = {
         header: '@',
         chartInfo: '=',
-        chartType: '@'
+        chartType: '@',
+        legend: '@'
     };
 
     static create() {

@@ -10,4 +10,5 @@ interface iResponse {
     headers: iHeader[];
     cookies: any[];
     content: iContent;
+    bodySize: number;
 }

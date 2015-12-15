@@ -4,6 +4,7 @@ export = ChartSwitcherController;
 
 class ChartSwitcherController {
     public chartType:number = null;
+    public legend:boolean = false;
 
     public BAR:number = 0;
     public PIE:number = 1;

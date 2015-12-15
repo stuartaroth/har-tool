@@ -7,14 +7,16 @@
                 class="chart chart-bar"
                 chart-data="ctrl.chartInfo.data"
                 chart-labels="ctrl.chartInfo.labels"
-                chart-series="ctrl.chartInfo.series">
+                chart-series="ctrl.chartInfo.series"
+                chart-legend="{{ctrl.legend}}">
         </canvas>
     </div>
     <div ng-show="ctrl.chartType == ctrl.PIE">
         <canvas
                 class="chart chart-pie"
                 chart-data="ctrl.chartInfo.data[0]"
-                chart-labels="ctrl.chartInfo.labels">
+                chart-labels="ctrl.chartInfo.labels"
+                chart-legend="{{ctrl.legend}}">
         </canvas>
     </div>
     <div ng-show="ctrl.chartType == ctrl.LINE">
@@ -22,21 +24,24 @@
                 class="chart chart-line"
                 chart-data="ctrl.chartInfo.data"
                 chart-labels="ctrl.chartInfo.labels"
-                chart-series="ctrl.chartInfo.series">
+                chart-series="ctrl.chartInfo.series"
+                chart-legend="{{ctrl.legend}}">
         </canvas>
     </div>
     <div ng-show="ctrl.chartType == ctrl.DOUGHNUT">
         <canvas
                 class="chart chart-doughnut"
                 chart-data="ctrl.chartInfo.data[0]"
-                chart-labels="ctrl.chartInfo.labels">
+                chart-labels="ctrl.chartInfo.labels"
+                chart-legend="{{ctrl.legend}}">
         </canvas>
     </div>
     <div ng-show="ctrl.chartType == ctrl.POLAR_AREA">
         <canvas
                 class="chart chart-polar-area"
                 chart-data="ctrl.chartInfo.data[0]"
-                chart-labels="ctrl.chartInfo.labels">
+                chart-labels="ctrl.chartInfo.labels"
+                chart-legend="{{ctrl.legend}}">
         </canvas>
     </div>
 </div>

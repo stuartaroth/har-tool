@@ -11,17 +11,20 @@ export = StatisticsController;
 class StatisticsController {
     public responses = null;
 
-    public mimeTypesByCountHeader:string = 'Number of Content Types Received';
+    public mimeTypesByCountHeader:string = 'Content Type by Count';
     public mimeTypesByCount:iChartInfo = null;
 
-    public mimeTypesBySizeHeader:string = 'Size (bytes) of Content Types Received';
+    public mimeTypesBySizeHeader:string = 'Content Type by Total Size';
     public mimeTypesBySize:iChartInfo = null;
 
-    public statusByCountHeader:string = 'HTTP Statuses Received';
+    public statusByCountHeader:string = 'HTTP Statuses by Count';
     public statusByCount:iChartInfo = null;
 
-    public longestTimesHeader:string = 'URLs by Longest Time to Load';
+    public longestTimesHeader:string = 'Top 10 Longest Requests';
     public longestTimes:iChartInfo = null;
+
+    public sizeOverTimeHeader:string = 'Response Sizes (Chronological Order)';
+    public sizeOverTime:iChartInfo = {data:[[], []], labels:[], series: ['Original Body Size', 'Compressed Body Size']};
 
     static $inject = [
         '$window',
@@ -48,12 +51,15 @@ class StatisticsController {
         var sizeMap:any = {};
         var statusMap:any = {};
         var longestTime:any = {};
+        var size = [];
+        var entries = [];
 
-        _.each(this.htManager.har.log.entries, (entry:iEntry) => {
+        _.each(this.htManager.har.log.entries, (entry:iEntry, index:number) => {
             this.htSorting.mapKeyCount(countMap, entry.response.content.mimeType);
             this.addSizeMap(sizeMap, entry.response);
             this.htSorting.mapKeyCount(statusMap, entry.response.status + " - " + entry.response.statusText);
-            this.addLongestTime(longestTime, entry)
+            this.addLongestTime(longestTime, entry);
+            this.addSizeOverTime(entry);
         });
 
         this.mimeTypesByCount = this.htSorting.getChartInfo(countMap, '');
@@ -62,6 +68,12 @@ class StatisticsController {
         this.longestTimes = this.htSorting.getChartInfo(longestTime, '');
         this.longestTimes.data[0]  = this.longestTimes.data[0].slice(0, 10);
         this.longestTimes.labels = this.longestTimes.labels.slice(0, 10);
+    }
+
+    public addSizeOverTime(entry:iEntry) {
+        this.sizeOverTime.data[0].push(entry.response.content.size);
+        this.sizeOverTime.data[1].push(entry.response.bodySize);
+        this.sizeOverTime.labels.push(entry.response.content.mimeType);
     }
 
     public addLongestTime(longestTime, entry:iEntry) {

@@ -4,14 +4,16 @@
             <ht-chart-switcher
                 header="{{::ctrl.mimeTypesByCountHeader}}"
                 chart-info="ctrl.mimeTypesByCount"
-                chart-type="3">
+                chart-type="3"
+                legend="false">
             </ht-chart-switcher>
         </div>
         <div class="col-lg-6 col-sm-12">
             <ht-chart-switcher
                 header="{{::ctrl.mimeTypesBySizeHeader}}"
                 chart-info="ctrl.mimeTypesBySize"
-                chart-type="2">
+                chart-type="0"
+                legend="false">
             </ht-chart-switcher>
         </div>
     </div>
@@ -20,14 +22,26 @@
             <ht-chart-switcher
                 header="{{::ctrl.statusByCountHeader}}"
                 chart-info="ctrl.statusByCount"
-                chart-type="0">
+                chart-type="0"
+                legend="false">
             </ht-chart-switcher>
         </div>
         <div class="col-lg-6 col-sm-12">
             <ht-chart-switcher
                 chart-info="ctrl.longestTimes"
                 header="{{::ctrl.longestTimesHeader}}"
-                chart-type="4">
+                chart-type="4"
+                legend="false">
+            </ht-chart-switcher>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <ht-chart-switcher
+                    header="{{::ctrl.sizeOverTimeHeader}}"
+                    chart-info="ctrl.sizeOverTime"
+                    chart-type="2"
+                    legend="true">
             </ht-chart-switcher>
         </div>
     </div>
