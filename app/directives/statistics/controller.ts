@@ -37,7 +37,7 @@ class StatisticsController {
         public htManager,
         public htSorting
     ) {
-        if(!htManager.har) {
+        if(!htManager.getHar()) {
             $window.location.href = "/#/upload";
         }
         else {

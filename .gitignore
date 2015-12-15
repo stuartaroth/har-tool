@@ -11,5 +11,5 @@ app/services/**/*.js
 app/services/**/*.js.map
 app/views/**/*.js
 app/views/**/*.js.map
-app/interfaces/**/*.js.map
+app/interfaces/**/*.js
 app/interfaces/**/*.js.map
